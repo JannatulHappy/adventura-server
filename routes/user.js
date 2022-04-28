@@ -1,10 +1,16 @@
 import express from "express";
 const router = express.Router();
+import auth from "../middleware/auth.js";
 
-import { signup, signin, googleSignIn } from "../controllers/user.js";
+import {
+  createTour,
+ 
+  getTours,
+  
+} from "../controllers/tour.js";
 
-router.post("/signup", signup);
-router.post("/signin", signin);
-router.post("/googleSignIn", googleSignIn);
+router.post("/", auth, createTour);
+router.get("/", getTours);
+
 
 export default router;
